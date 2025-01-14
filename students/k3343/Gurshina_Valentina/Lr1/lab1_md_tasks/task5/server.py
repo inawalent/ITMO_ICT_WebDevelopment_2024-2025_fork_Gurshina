@@ -24,7 +24,7 @@ def process_client_request(client_socket, client_address):
             post_params = extract_post_parameters(body)
             discipline, grade = post_params.get('discipline', ''), post_params.get('grade', '')
             grades_data[discipline] = grades_data.get(discipline, []) + [grade]
-            send_http_response(client_socket, '200 OK', 'Content-Type: text/plain', 'Данные получены!')
+            send_http_response(client_socket, '200 OK', 'Content-Type: text/plain', 'We got data!')
         else:
             send_http_response(client_socket, '405 Method Not Allowed', 'Content-Type: text/plain',
                                 'This method is not allowed. Try again, please ^.^')
@@ -60,6 +60,7 @@ def generate_html():
     return f"""<!DOCTYPE html>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Отметки</title>
 </head>
 <body>
